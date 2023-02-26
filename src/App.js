@@ -1,25 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import { Routes,Route } from "react-router-dom";
 
-function App() {
+import Navigation from "./components/routes/navigation/navigation.componet";
+import Home from "./components/routes/home/home.component";
+import Authentication from "./components/routes/authentication/authentication.component";
+import Shop from "./components/routes/shop/shop.component";
+import Checkout from "./components/routes/checkout/checkout.component";
+
+const App = () => {
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <Routes>
+      <Route path="/" element={ <Navigation /> }>
+        <Route index element={<Home />} />
+        {/* path="shop/*" pq shop tera as rotas das categorias que utilizarao <Shop /> */}
+        <Route path="shop/*" element={<Shop />} /> 
+        <Route path="auth" element={<Authentication />} />
+        <Route path="checkout" element={<Checkout />} />
+      </Route>
+    </Routes>
+  )
 }
 
 export default App;
